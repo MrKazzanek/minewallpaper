@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MineWallpapers Loader</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    #loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-size: 2em;
+      background-color: #000;
+    }
+    #ransom {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2em;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #111, #000);
+    }
+    .title {
+      font-size: 2.5em;
+      color: red;
+      margin-bottom: 1em;
+    }
+    .timer {
+      font-size: 2em;
+      margin: 1em 0;
+    }
+    .key-input {
+      margin-top: 2em;
+    }
+    input[type="text"] {
+      padding: 0.5em;
+      font-size: 1em;
+      width: 300px;
+      border: 2px solid red;
+      background: black;
+      color: white;
+    }
+    button {
+      margin-left: 1em;
+      padding: 0.5em 1em;
+      background: red;
+      color: white;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .note {
+      font-size: 1.1em;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loader">
+  <div>
+    <div style="font-size: 1.5em;">Ładowanie MineWallpapers...</div>
+    <button onclick="initApp()" style="margin-top: 2em; font-size: 1.2em; padding: 1em 2em;">Uruchom</button>
+  </div>
+</div>
+
+  <div id="ransom">
+    <div class="title">😈 Wszystkie Twoje pliki zostały zaszyfrowane 😈</div>
+    <div class="note">
+      Aby odzyskać dostęp, wyślij 500 zł na adres e-mail: <b>troll@troll.com</b><br><br>
+      Jeśli nie zrobisz tego w ciągu 1 godziny, wszystkie pliki zostaną usunięte!
+    </div>
+    <div class="timer" id="countdown">01:00:00</div>
+    <div class="key-input">
+      <input type="text" placeholder="Wpisz klucz deszyfrujący...">
+      <button onclick="alert('Zły klucz! Próbuj dalej.')">Zatwierdź</button>
+    </div>
+  </div>
+
+  <script>
+    function startFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.warn(`Fullscreen failed: ${err.message}`);
+        });
+      }
+    }
+
+    function startCountdown(duration, display) {
+      let timer = duration, hours, minutes, seconds;
+      setInterval(function () {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = hours + ":" + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          display.textContent = "PLIKI USUNIĘTE 😈 (żartuję!)";
+        }
+      }, 1000);
+    }
+
+    function initApp() {
+  startFullscreen();
+  document.getElementById('loader').style.display = 'none';
+  document.getElementById('ransom').style.display = 'flex';
+  const oneHour = 60 * 60;
+  const countdownDisplay = document.getElementById('countdown');
+  startCountdown(oneHour, countdownDisplay);
+}
+
+  </script>
+</body>
+</html>
