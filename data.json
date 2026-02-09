@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "type": "single",
+    "question": "Jaka jest maksymalna wysokość budowania w Overworld?",
+    "time": 15,
+    "answers": ["256", "319", "320", "512"],
+    "correct": ["320"]
+  },
+  {
+    "id": 2,
+    "type": "match",
+    "question": "Dopasuj wymiar do bossa",
+    "time": 30,
+    "pairs": {
+      "End": "Ender Dragon",
+      "Overworld": "Warden",
+      "Nether": "Wither"
+    }
+  },
+  {
+    "id": 3,
+    "type": "bool",
+    "question": "Czy złote narzędzia są szybsze od diamentowych?",
+    "time": 10,
+    "answers": ["Prawda", "Fałsz"],
+    "correct": ["Prawda"]
+  }
+
+  // ... dodaj więcej pytań (minimum 30 łącznie) ...
+]
